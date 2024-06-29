@@ -1,0 +1,52 @@
+CHIP Add8 {
+    IN a[8], b[8];
+    OUT out[8];
+
+    PARTS:
+    // Generate and Propagate signals
+    And(a=a[0], b=b[0], out=g0);
+    Or(a=a[0], b=b[0], out=p0);
+    
+    And(a=a[1], b=b[1], out=g1);
+    Or(a=a[1], b=b[1], out=p1);
+    
+    And(a=a[2], b=b[2], out=g2);
+    Or(a=a[2], b=b[2], out=p2);
+    
+    And(a=a[3], b=b[3], out=g3);
+    Or(a=a[3], b=b[3], out=p3);
+    
+    And(a=a[4], b=b[4], out=g4);
+    Or(a=a[4], b=b[4], out=p4);
+    
+    And(a=a[5], b=b[5], out=g5);
+    Or(a=a[5], b=b[5], out=p5);
+    
+    And(a=a[6], b=b[6], out=g6);
+    Or(a=a[6], b=b[6], out=p6);
+    
+    And(a=a[7], b=b[7], out=g7);
+    Or(a=a[7], b=b[7], out=p7);
+
+    // Carry signals
+    // Assume initial carry-in (C0) is 0
+    False(out=c0);
+    Or(a=g0, b=p0, out=c1);
+    Or(a=g1, b=p1, out=c2);
+    Or(a=g2, b=p2, out=c3);
+    Or(a=g3, b=p3, out=c4);
+    Or(a=g4, b=p4, out=c5);
+    Or(a=g5, b=p5, out=c6);
+    Or(a=g6, b=p6, out=c7);
+    Or(a=g7, b=p7, out=c8);
+
+    // Sum (output)
+    Xor(a=p0, b=c0, out=out[0]);
+    Xor(a=p1, b=c1, out=out[1]);
+    Xor(a=p2, b=c2, out=out[2]);
+    Xor(a=p3, b=c3, out=out[3]);
+    Xor(a=p4, b=c4, out=out[4]);
+    Xor(a=p5, b=c5, out=out[5]);
+    Xor(a=p6, b=c6, out=out[6]);
+    Xor(a=p7, b=c7, out=out[7]);
+}
