@@ -1,0 +1,34 @@
+// pseudocode
+// i = 1
+// sum = 0
+// while true {
+//  if ((i - 100) > 0){
+//      break
+//  }
+//  sum += i
+//  i++
+// }
+//
+
+@i
+M=1
+@sum
+M=0
+(LOOP)
+@i
+D=M
+@100
+D=D-A
+@END
+D;JGT
+@i
+D=M
+@sum
+M=D+M
+@i
+M=M+1
+@LOOP
+0;JMP
+(END)
+@END
+0;JMP
